@@ -23,19 +23,28 @@ namespace PAC.WebAPI
         [HttpGet("students")]
         public IActionResult GetStudents()
         {
-            return null;
+            IEnumerable<Student> students = _studentLogic.GetStudents();
+            List<Student> result = new List<Student>();
+            foreach (Student student in students)
+            {
+                result.Add(student);
+            }
+
+            return Ok(result);
         }
 
         [HttpGet("student/{id}")]
         public IActionResult GetStudentById([FromRoute] int id)
         {
-            return null;
+            Student student = _studentLogic.GetStudentById(id);
+            return Ok(student);
         }
 
         [HttpPost("student/create")]
         public IActionResult CreateStudent([FromBody] Student student)
         {
-            return null;
+            _studentLogic.InsertStudents(student);
+            return Ok();
         }
     }
 }

@@ -74,6 +74,8 @@ public class StudentControllerTest
                 Name = "Test"
             };
 
+            logic.Setup(l => l.InsertStudents((someStudent)));
+
             var result = controller.CreateStudent(someStudent);
             var okResult = result as OkResult;
 
