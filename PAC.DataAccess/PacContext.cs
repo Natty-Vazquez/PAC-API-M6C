@@ -5,10 +5,16 @@ namespace PAC.DataAccess
 {
 	public class PacContext : DbContext
     {
+        public DbSet<Student> Students { get; set; }
+
         public PacContext() { }
         public PacContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder){}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Student>().HasKey(u => u.Id);
+            modelBuilder.Entity<Student>().Property(u => u.Id).ValueGeneratedOnAdd();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

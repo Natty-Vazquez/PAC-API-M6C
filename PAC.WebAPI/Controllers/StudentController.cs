@@ -19,5 +19,23 @@ namespace PAC.WebAPI
         {
             this._studentLogic = studentLogic;
         }
+
+        [HttpGet("students")]
+        public IActionResult GetStudents()
+        {
+            return null;
+        }
+
+        [HttpGet("student/{id}")]
+        public IActionResult GetStudentById([FromRoute] int id)
+        {
+            return null;
+        }
+
+        [HttpPost("student/create")]
+        public IActionResult CreateStudent([FromBody] Student student)
+        {
+            return null;
+        }
     }
 }
